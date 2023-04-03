@@ -9,10 +9,8 @@ import numpy
 
 
 app = Flask(__name__)
-token = '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'
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
-# os.environ['OPEN_API_KEY'] = "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"
 
 tokenizer = AutoTokenizer.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment")
 model = AutoModelForSequenceClassification.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment")
@@ -67,10 +65,6 @@ def home():
 
 @app.route('/', methods = ['GET'])
 def disp():
-
-    # if (request.args.get('token') != token):
-    #     return '',401
-
     return request.args.get('challenge')
 
 if __name__ == '__main__':
